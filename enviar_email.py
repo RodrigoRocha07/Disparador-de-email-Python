@@ -3,15 +3,27 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from texto import texto
 
-def enviar_email():
+
+destinatarios = ['rodrigorochafn@gmail.com',
+                 'administrativo@drandreguanabara.com.br',
+                'dp@drandreguanabara.com.br',
+                'compras@drandreguanabara.com.br',
+                'supervisaocomercial@drandreguanabara.com.br',
+                'taywan@wakeperformance.com.br',
+                'operacoes@drandreguanabara.com.br',
+                'fernanda.maias92@gmail.com']
+
+
+def enviar_email(destinatario):
     
     corpo_email = texto
 
     # Criando a mensagem
     msg = MIMEMultipart()
-    msg['Subject'] = "Teste de email automatoco"
-    msg['From'] = 'devrodrigonunes@gmail.com'  # Coloque seu endereço de e-mail
-    msg['To'] = 'rodrigorochafn@gmail.com'  # Coloque o endereço de e-mail do destinatário
+    msg['Subject'] = "Programação de pagamentos da semana"
+    msg['From'] = 'financeiro@drandreguanabara.com.br'  # Coloque seu endereço de e-mail
+    msg['To'] =(destinatario)
+
 
     # Adicionando o corpo do e-mail
     msg.attach(MIMEText(corpo_email, 'html'))
@@ -25,8 +37,10 @@ def enviar_email():
     s.starttls()
 
     # Substitua 'seu_email@gmail.com' e 'sua_senha' com suas credenciais do Gmail
-    email = 'devrodrigonunes@gmail.com'
-    senha = 'bgqzbkthwouucalx'
+    #email = 'devrodrigonunes@gmail.com'
+    #senha = 'bgqzbkthwouucalx'
+    email = 'financeiro@drandreguanabara.com.br'
+    senha = 'cjnnseuuwtheamak'
 
     # Faça login no servidor SMTP
     s.login(email, senha)
@@ -37,6 +51,8 @@ def enviar_email():
     # Encerrando a conexão com o servidor
     s.quit()
 
-    print('E-mail enviado com sucesso.')
+    print(f'E-mail enviado com sucesso. {destinatario}')
 
+#for destinatario in destinatarios:
+    #enviar_email(destinatario)
 
